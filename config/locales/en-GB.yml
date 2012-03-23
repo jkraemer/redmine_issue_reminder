@@ -1,0 +1,12 @@
+'en-GB':
+  issue_reminder:
+    settings:
+      remind_after_days: Consider issues inactive after x days
+
+  project_module_issue_reminder: Issue Reminders
+  permission_receive_issue_reminders: Receive inactive issue reminders
+
+  mail_subject_issue_reminder: "{{count}} issue(s) need your attention"
+  mail_body_issue_reminder: "The following issues have seen no action in the last {{age}} days"
+  mail_body_issue_reminder_assigned_to: " assigned to {{name}}"
+  mail_body_issue_reminder_inactive_since: " inactive since {{date}}"

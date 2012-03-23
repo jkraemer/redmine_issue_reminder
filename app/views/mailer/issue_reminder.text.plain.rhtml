@@ -1,0 +1,8 @@
+<%= l :mail_body_issue_reminder, :age => Setting.plugin_redmine_issue_reminder['remind_after_days'] %>:
+
+<% @issues.each_pair do |project, issues| -%>
+<%= project.name %>:
+<% issues.each do |issue| -%>
+    * <%= "##{issue.id}: #{issue.subject} - #{@issue_url.call(issue)}#{l(:mail_body_issue_reminder_assigned_to, :name => issue.assigned_to.name) if issue.assigned_to && issue.assigned_to != @user}#{l :mail_body_issue_reminder_inactive_since, :date => format_date(issue.updated_on)}" %>
+<% end -%>
+<% end %>

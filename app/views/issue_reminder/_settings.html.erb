@@ -1,0 +1,9 @@
+  <p>
+    <label for="settings_remind_after_days"><%= t '.remind_after_days' %></label>
+    <%= text_field_tag 'settings[remind_after_days]', @settings['remind_after_days'], :size => 5 %>
+  </p>
+<p>
+    <label for="settings_close_issues_after_days"><%= t '.close_issues_after_days' %></label>
+    <%= text_field_tag 'settings[close_issues_after_days]', @settings['close_issues_after_days'], :size => 5 %>
+  </p>
+

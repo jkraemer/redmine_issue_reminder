@@ -1,0 +1,13 @@
+'de':
+  issue_reminder:
+    settings:
+      remind_after_days: Tickets nach x Tagen als inaktiv werten
+      close_issues_after_days: Gelöste Tickets nach x Tagen schließen
+
+  project_module_issue_reminder: Ticket-Erinnerungen
+  permission_receive_issue_reminders: Erinnerungen an inaktive Tickets empfangen
+
+  mail_subject_issue_reminder: "{{count}} Aufgaben benötigen Ihre Aufmerksamkeit"
+  mail_body_issue_reminder: "Die folgenden Tickets wurden in den letzten {{age}} Tagen nicht aktualisiert"
+  mail_body_issue_reminder_assigned_to: " zugewiesen an {{name}}"
+  mail_body_issue_reminder_inactive_since: " inaktiv seit {{date}}"
