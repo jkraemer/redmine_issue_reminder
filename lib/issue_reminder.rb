@@ -7,6 +7,7 @@ module IssueReminder
   end
 
   def self.close_old_resolved_issues
+    # FIXME make the resolved / closed states configurable
     resolved = IssueStatus.find_by_name 'Gelöst'
     closed = IssueStatus.find_by_name 'Geschlossen'
     Issue.find(:all,
@@ -15,8 +16,12 @@ module IssueReminder
                  Setting.plugin_redmine_issue_reminder['close_issues_after_days'].to_i.days.ago,
                  resolved.id
                ]).each do |issue|
+      # closing parent issues closes child issues, too.
+      # that may lead to stale, already closed issues in our list.
       i = Issue.find issue.id
-      i.update_attribute :status, closed unless i.closed?
+      next if i.closed? 
+      i.init_journal(User.anonymous, "automatic close after #{Setting.plugin_redmine_issue_reminder['close_issues_after_days']} days")
+      i.update_attribute :status, closed
     end
   end
 
