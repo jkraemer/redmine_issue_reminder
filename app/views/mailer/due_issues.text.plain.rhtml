@@ -1,0 +1,8 @@
+<%= l :mail_body_due_issues, :date => format_date(7.days.from_now) %>:
+
+<% @issues.each_pair do |project, issues| -%>
+<%= project.name %>:
+<% issues.each do |issue| -%>
+    * <%= "##{issue.id}: #{issue.subject} - #{@issue_url.call(issue)}#{l :mail_body_issue_reminder_due_date, :date => format_date(issue.due_date)}" %>
+<% end -%>
+<% end %>

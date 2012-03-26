@@ -5,9 +5,13 @@
       close_issues_after_days: Gelöste Tickets nach x Tagen schließen
 
   project_module_issue_reminder: Ticket-Erinnerungen
-  permission_receive_issue_reminders: Erinnerungen an inaktive Tickets empfangen
+  permission_receive_issue_reminders: "Erinnerungen an inaktive Tickets empfangen (projektweit)"
+  permission_receive_due_issues: "Erinnerungen an fällige und überfällige Tickets empfangen (nur eigene)"
 
   mail_subject_issue_reminder: "{{count}} Aufgaben benötigen Ihre Aufmerksamkeit"
   mail_body_issue_reminder: "Die folgenden Tickets wurden in den letzten {{age}} Tagen nicht aktualisiert"
   mail_body_issue_reminder_assigned_to: " zugewiesen an {{name}}"
   mail_body_issue_reminder_inactive_since: " inaktiv seit {{date}}"
+  mail_subject_due_issues: "{{count}} Tickets sind in der nächsten Woche fällig"
+  mail_body_due_issues: "Die folgenden Tickets sind bis zum {{date}} fällig"
+  mail_body_issue_reminder_due_date: " fällig am {{date}}"

@@ -25,5 +25,6 @@ Redmine::Plugin.register :redmine_issue_reminder do
 
   project_module :issue_reminder do
     permission :receive_issue_reminders, {}
+    permission :receive_due_issues, {}
   end
 end

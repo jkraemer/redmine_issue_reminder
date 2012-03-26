@@ -10,6 +10,17 @@ module IssueReminder
 
       module InstanceMethods
 
+        def due_issues(user, issues)
+          set_language_if_valid user.language
+          recipients user.mail
+          issue_count = issues.values.inject(0){|sum, i| sum + i.size}
+          subject l(:mail_subject_due_issues, :count => issue_count)
+          body :issues => issues,
+               :user => user,
+               :issue_url => lambda{ |issue| url_for(:controller => 'issues', :action => 'show', :id => issue.id) }
+          render_multipart('due_issues', body)
+        end
+
         def issue_reminder(user, issues)
           set_language_if_valid user.language
           recipients user.mail
