@@ -1,0 +1,83 @@
+Redmine Issue Reminders
+=======================
+
+This plugin supplies several rake tasks for sending out email reminders
+listing inactive issues, due / overdue issues, and for automatically
+closing issues that have been marked 'resolved' a number of days ago and
+not seen any activity since.
+
+The email functionality has to be activated per project (Settings /
+Modules). The closing of old resolved issues acts globally on all
+projects. The number of days without activity after which to consider an
+issue inactive can be set in the global plugin settings (Administration
+/ Plugins) (defaults to 90). The same goes for the number of days after
+which to close resolved issues (defaults to 120).
+
+inactive issue reminder
+-----------------------
+
+    rake redmine:send_issue_reminders
+
+This task will send out one email to every user, listing all inactive
+issues assigned to that user. In addition, if the user has the
+permission _Receive inactive issue reminders (for the whole project)_ in
+a given project, also inactive issues not assigned to that user will be
+added to the list. Users not having any inactive issues wont receive an
+email of course. The idea is to run this task once a week, i.e. on
+sunday or monday morning in order to remind every user of his inactive
+issues, and to give project managers (via the permission mentioned
+above) an overview of inactive issues for their projects, regardless of
+who's the assignee.
+
+due issues reminder
+-------------------
+
+    rake redmine:send_due_issues
+
+Sends out one email to users, reminding them of their unresolved issues
+with a due date on or before (today + 7 days). So if this is run every
+week on monday morning, every user will receive a list of issues that
+are due this week or on next monday. The permission _Receive due and
+overdue issue reminders (only if assignee)_ determines wether a user
+will receive such notifications or not.
+
+_Unresolved issues_ here are defined as 'not open' and not having the
+resolved but open issue state as explained below. You might want to
+customize that in lib/issue\_reminders.rb.
+
+close old resolved issues
+-------------------------
+
+    rake redmine:close_old_resolved_issues
+
+In our setup, we have a 'resolved' issue state which is not 'closed' in
+the redmine sense. This is because in our workflow, an issue is
+considered open until the customer (or whoever is the product owner)
+actively sets the resolved issue to 'closed'. Sometimes however people
+forget about this or feel too busy/lazy to do so. This rake task will
+clean up such old resolved issues by auto-closing them. By doing so the
+regular redmine email notifications will be sent out, reminding
+everybody concerned with the issue one last time. Run this via cron i.e.
+once a week. Be aware of the fact that if you have a lot of old resolved
+but not closed issues, the first run might take a while, sending out a
+lot of emails.
+
+
+NOTE: The plugin has the 'resolved' and 'closed' issue states hard coded
+in lib/issue\_reminder.rb, be sure to change these to match your setup.
+Search the file for lines containing 'IssueStatus.find\_by\_name'.
+
+Patches making these states configurable are welcome ;-)
+
+
+License
+-------
+
+MIT
+
+
+Author
+------
+
+Jens Krämer, http://www.jkraemer.net/
+
