@@ -69,6 +69,12 @@ Search the file for lines containing 'IssueStatus.find\_by\_name'.
 
 Patches making these states configurable are welcome ;-)
 
+Supported Redmine versions
+--------------------------
+
+developed and tested with Redmine 1.2, but should also run with slightly
+older / newer versions. Bug reports and reports of success and failure
+with other versions of Redmine are welcome of course.
 
 License
 -------
