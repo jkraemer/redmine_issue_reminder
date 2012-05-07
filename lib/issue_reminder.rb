@@ -73,7 +73,7 @@ module IssueReminder
                       Project::STATUS_ACTIVE
                     ]).each do |issue|
       receivers = users(issue.assigned_to)
-      receivers += other_receivers(issue.project, :receive_due_issues)
+      receivers += other_receivers(issue.project, :receive_issue_reminders)
       receivers.uniq.each do |receiver|
         issues_by_project = issues_by_user_and_project[receiver] ||= {}
         (issues_by_project[issue.project] ||= []) << issue
