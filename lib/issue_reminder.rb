@@ -54,11 +54,20 @@ module IssueReminder
                       ]
                      ).each do |issue|
         users(issue.assigned_to).uniq.each do |receiver|
-          if receiver.allowed_to?(:receive_due_issues, issue.project)
+          if non_admin_allowed_to?(receiver, issue.project, :receive_due_issues)
             issues_by_user_and_project[receiver][issue.project] << issue
           end
         end
       end
+    end
+  end
+
+  # same as user#allowed_to, but only checking actual permissions, ignoring the result of user#admin?
+  def self.non_admin_allowed_to?(user, project, permission)
+    if roles = user.roles_for_project(project)
+      return true if roles.detect {|role|
+        role.member? && role.allowed_to?(permission)
+      }
     end
   end
 
@@ -84,7 +93,7 @@ module IssueReminder
 
   def self.other_receivers(project, permission)
     project.members.map(&:principal).select do |p|
-      p.allowed_to?(permission, project)
+      non_admin_allowed_to?(p, project, permission)
     end.map do |p|
       users(p)
     end.flatten
