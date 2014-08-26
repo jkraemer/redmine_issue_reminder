@@ -1,38 +1,31 @@
 module IssueReminder
   module Patches
     module MailerPatch
-      def self.included(base)
-        return if base < InstanceMethods
-        base.class_eval do
-          include InstanceMethods
-        end
+
+      def due_issues(user, issues)
+        #set_language_if_valid user.language
+        #issue_count = issues.values.inject(0){|sum, i| sum + i.size}
+        #@issues = issues
+        #@user = user
+        #mail to: user.mail,
+        #  subject: l(:mail_subject_due_issues, :count => issue_count)
+        reminder_mail user, issues, :mail_subject_due_issues
       end
 
-      module InstanceMethods
-
-        def due_issues(user, issues)
-          set_language_if_valid user.language
-          recipients user.mail
-          issue_count = issues.values.inject(0){|sum, i| sum + i.size}
-          subject l(:mail_subject_due_issues, :count => issue_count)
-          body :issues => issues,
-               :user => user,
-               :issue_url => lambda{ |issue| url_for(:controller => 'issues', :action => 'show', :id => issue.id) }
-          render_multipart('due_issues', body)
-        end
-
-        def issue_reminder(user, issues)
-          set_language_if_valid user.language
-          recipients user.mail
-          issue_count = issues.values.inject(0){|sum, i| sum + i.size}
-          subject l(:mail_subject_issue_reminder, :count => issue_count)
-          body :issues => issues,
-               :user => user,
-               :issue_url => lambda{ |issue| url_for(:controller => 'issues', :action => 'show', :id => issue.id) }
-          render_multipart('issue_reminder', body)
-        end
-
+      def issue_reminder(user, issues)
+        reminder_mail user, issues, :mail_subject_issue_reminder
       end
+
+      def reminder_mail(user, issues, subject)
+        set_language_if_valid user.language
+        issue_count = issues.values.inject(0){|sum, i| sum + i.size}
+        @issues = issues
+        @user = user
+        mail to: user.mail,
+          subject: l(subject, count: issue_count)
+      end
+      private :reminder_mail
+
     end
   end
 end

@@ -72,8 +72,9 @@ Patches making these states configurable are welcome ;-)
 Supported Redmine versions
 --------------------------
 
-developed and tested with Redmine 1.2, but should also run with slightly
-older / newer versions. Bug reports and reports of success and failure
+Current master should run on any Redmine 2.x. See the redmine-1.x tag for a version that runs on Redmine 1.2 - 1.4.
+
+Bug reports and reports of success and failure
 with other versions of Redmine are welcome of course.
 
 License
@@ -85,5 +86,5 @@ MIT
 Author
 ------
 
-Jens Krämer, http://www.jkraemer.net/
+Jens Krämer, http://jkraemer.net/
 

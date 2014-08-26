@@ -4,7 +4,7 @@
 <h3><%= project.name %></h3>
 <ul><% issues.each do |issue| -%>
 <li>
-  <a href="<%= @issue_url.call(issue) %>"><%= "##{issue.id}: #{issue.subject}" %></a>
+  <a href="<%= issue_url issue %>"><%= "##{issue.id}: #{issue.subject}" %></a>
     -<%= "#{l :mail_body_issue_reminder_due_date, :date => format_date(issue.due_date)}" %></li>
 <% end -%></ul>
 <% end %>

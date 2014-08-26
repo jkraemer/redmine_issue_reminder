@@ -3,6 +3,6 @@
 <% @issues.each_pair do |project, issues| -%>
 <%= project.name %>:
 <% issues.each do |issue| -%>
-    * <%= "##{issue.id}: #{issue.subject} - #{@issue_url.call(issue)}#{l(:mail_body_issue_reminder_assigned_to, :name => issue.assigned_to.name) if issue.assigned_to && issue.assigned_to != @user}#{l :mail_body_issue_reminder_inactive_since, :date => format_date(issue.updated_on)}" %>
+    * <%= "##{issue.id}: #{issue.subject} - #{issue_url issue}#{l(:mail_body_issue_reminder_assigned_to, :name => issue.assigned_to.name) if issue.assigned_to && issue.assigned_to != @user}#{l :mail_body_issue_reminder_inactive_since, :date => format_date(issue.updated_on)}" %>
 <% end -%>
 <% end %>
