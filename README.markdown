@@ -6,12 +6,16 @@ listing inactive issues, due / overdue issues, and for automatically
 closing issues that have been marked 'resolved' a number of days ago and
 not seen any activity since.
 
-The email functionality has to be activated per project (Settings /
-Modules). The closing of old resolved issues acts globally on all
-projects. The number of days without activity after which to consider an
-issue inactive can be set in the global plugin settings (Administration
-/ Plugins) (defaults to 90). The same goes for the number of days after
+The email functionality has to be activated per project (Settings / Modules).
+The closing of old resolved issues acts globally on all projects. Before using
+the plugin for the first time you have to set the issue statuses to consider as
+'resolved' and 'closed' in the global plugin settings (Administration /
+Plugins).
+
+Other configuration options are the number of days without activity after which
+to consider an issue inactive (defaults to 90), and the number of days after
 which to close resolved issues (defaults to 120).
+
 
 inactive issue reminder
 -----------------------
@@ -29,6 +33,7 @@ issues, and to give project managers (via the permission mentioned
 above) an overview of inactive issues for their projects, regardless of
 who's the assignee.
 
+
 due issues reminder
 -------------------
 
@@ -44,6 +49,7 @@ will receive such notifications or not.
 _Unresolved issues_ here are defined as 'not open' and not having the
 resolved but open issue state as explained below. You might want to
 customize that in lib/issue\_reminders.rb.
+
 
 close old resolved issues
 -------------------------
@@ -62,12 +68,6 @@ once a week. Be aware of the fact that if you have a lot of old resolved
 but not closed issues, the first run might take a while, sending out a
 lot of emails.
 
-
-NOTE: The plugin has the 'resolved' and 'closed' issue states hard coded
-in lib/issue\_reminder.rb, be sure to change these to match your setup.
-Search the file for lines containing 'IssueStatus.find\_by\_name'.
-
-Patches making these states configurable are welcome ;-)
 
 Supported Redmine versions
 --------------------------

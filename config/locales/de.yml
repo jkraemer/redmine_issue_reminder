@@ -3,6 +3,8 @@ de:
     settings:
       remind_after_days: Tickets nach x Tagen als inaktiv werten
       close_issues_after_days: Gelöste Tickets nach x Tagen schließen
+      resolved_state_id: 'Gelöst-Status'
+      closed_state_id: 'Geschlossen-Status'
 
   project_module_issue_reminder: Ticket-Erinnerungen
   permission_receive_issue_reminders: "Erinnerungen an inaktive Tickets empfangen (projektweit)"

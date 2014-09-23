@@ -21,7 +21,9 @@ Redmine::Plugin.register :redmine_issue_reminder do
 
   settings :default => {
     'remind_after_days' => '90',
-    'close_issues_after_days' => '120'
+    'close_issues_after_days' => '120',
+    'resolved_state_id' => IssueStatus.find_by_name('Gelöst').try(:id),
+    'closed_state_id' => IssueStatus.find_by_name('Geschlossen').try(:id)
   }, :partial => 'issue_reminder/settings'
 
   project_module :issue_reminder do

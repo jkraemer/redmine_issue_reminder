@@ -7,3 +7,11 @@
     <%= text_field_tag 'settings[close_issues_after_days]', @settings['close_issues_after_days'], :size => 5 %>
   </p>
 
+  <p>
+    <label for="settings_resolved_state_id"><%= t '.resolved_state_id' %></label>
+    <%= select_tag 'settings[resolved_state_id]', options_from_collection_for_select(IssueStatus.all, :id, :name, @settings['resolved_state_id']) %>
+  </p>
+  <p>
+    <label for="settings_closed_state_id"><%= t '.closed_state_id' %></label>
+    <%= select_tag 'settings[closed_state_id]', options_from_collection_for_select(IssueStatus.all, :id, :name, @settings['closed_state_id']) %>
+  </p>

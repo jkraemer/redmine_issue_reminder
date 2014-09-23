@@ -3,6 +3,8 @@ en:
     settings:
       remind_after_days: Consider issues inactive after x days
       close_issues_after_days: Close resolved issues after x days
+      resolved_state_id: 'Resolved state'
+      closed_state_id: 'Closed state'
 
   project_module_issue_reminder: Issue Reminders
   permission_receive_issue_reminders: "Receive inactive issue reminders (for the whole project)"
