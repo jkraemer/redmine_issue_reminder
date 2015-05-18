@@ -1,0 +1,24 @@
+pt-BR:
+  issue_reminder:
+    settings:
+      remind_after_days: Considerar tarefas inativas após (dias)
+      close_issues_after_days: Encerrar tarefas resolvidas há mais de (dias)
+      resolved_state_id: 'Estado de tarefas resolvidas'
+      closed_state_id: 'Estado de tarefas encerradas'
+
+  project_module_issue_reminder: Lembretes de tarefas
+  permission_receive_issue_reminders: "Receber lembretes de tarefas inativas (de todo o projeto)"
+  permission_receive_due_issues: "Receber lembretes de prazos de tarefas (somente se atribuído)"
+
+  mail_subject_issue_reminder:
+    one: "Uma tarefa precisa da sua atenção"
+    other: "%{count} tarefas precisam da sua atenção"
+  mail_body_issue_reminder: "As tarefas seguintes não tiveram atualização nos últimos %{age} dias"
+  mail_body_issue_reminder_assigned_to: " atribuída a %{name}"
+  mail_body_issue_reminder_inactive_since: " inativa desde %{date}"
+  mail_subject_due_issues:
+    one: "Uma tarefa terá prazo encerrado na semana que vem."
+    other: "%{count} tarefas terão seu prazo encerrado na semana que vem."
+  mail_body_due_issues: "As tarefas seguintes estão com prazo vencendo em %{date} ou antes"
+  mail_body_issue_reminder_due_date: " prazo até %{date}"
+
