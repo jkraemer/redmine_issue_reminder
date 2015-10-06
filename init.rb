@@ -1,8 +1,5 @@
 # encoding: utf-8
 
-require 'redmine'
-require_dependency 'mailer'
-
 def patch_class(clazz, patch)
   clazz.send(:include, patch) unless clazz.include?(patch)
 end
@@ -16,8 +13,10 @@ Redmine::Plugin.register :redmine_issue_reminder do
   name 'Inactive Issue Reminder'
   author 'Jens Krämer'
   description 'Notifications for issues that havent been updated for a configurable number of days'
-  version '0.1.0'
-  author_url 'http://jkraemer.net/'
+  version '1.0.0'
+  author_url 'https://jkraemer.net/'
+
+  requires_redmine version_or_higher: '2.6.0'
 
   settings :default => {
     'remind_after_days' => '90',
