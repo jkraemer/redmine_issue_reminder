@@ -18,11 +18,16 @@ Redmine::Plugin.register :redmine_issue_reminder do
 
   requires_redmine version_or_higher: '2.6.0'
 
+  # in case this plugin is added before running the first migrations,
+  # issue_statuses table doesn't exist, therefore the rescue
+  resolved_state_id = IssueStatus.find_by_name('Gelöst').try(:id) rescue nil
+  closed_state_id   = IssueStatus.find_by_name('Geschlossen').try(:id) rescue nil
+
   settings :default => {
     'remind_after_days' => '90',
     'close_issues_after_days' => '120',
-    'resolved_state_id' => IssueStatus.find_by_name('Gelöst').try(:id),
-    'closed_state_id' => IssueStatus.find_by_name('Geschlossen').try(:id)
+    'resolved_state_id' => resolved_state_id,
+    'closed_state_id' => closed_state_id
   }, :partial => 'issue_reminder/settings'
 
   project_module :issue_reminder do
