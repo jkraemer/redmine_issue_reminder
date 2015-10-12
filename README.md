@@ -1,4 +1,4 @@
-Redmine Issue Reminders
+Redmine Issue Reminders Plugin [![Build Status](https://travis-ci.org/jkraemer/redmine_issue_reminder.svg?branch=master)](https://travis-ci.org/jkraemer/redmine_issue_reminder)
 =======================
 
 This plugin supplies several rake tasks for sending out email reminders
