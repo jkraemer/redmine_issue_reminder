@@ -72,6 +72,7 @@ lot of emails.
 Supported Redmine versions
 --------------------------
 
+
 Current master should run on any Redmine 2.x. See the redmine-1.x tag for a version that runs on Redmine 1.2 - 1.4.
 
 Bug reports and reports of success and failure
